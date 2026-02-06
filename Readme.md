@@ -91,6 +91,32 @@ npm run dev
 
 Visit **http://localhost:3000** to access the dashboard.
 
+### 🔬 The Core Algorithm (Vision MVP)
+
+### Why Vision (CIFAR-10)?
+Text models (LLMs) entangle knowledge (e.g., removing "Harry Potter" removes "Wizards"). 
+Vision models have **distinct classes**, making them perfect for proving unlearning works.
+
+**The Task:**
+1.  Train a **ResNet-18** on **CIFAR-10** (Cars, Cats, Planes...).
+2.  **Unlearn Class 3 (Cats)** while keeping Class 1 (Cars) accurate.
+
+### Gradient Ascent (The "Eraser")
+
+Located in: `core/unlearning/simple_unlearn.py`
+
+Normally, you train a model to **minimize** error:
+```python
+loss.backward()  # Gradient DESCENT
+```
+
+To unlearn, we **maximize** error on the specific target data:
+```python
+(-loss).backward()  # Gradient ASCENT (The "Anti-Learning")
+```
+
+This pushes the model's weights *away* from recognizing the target concept.
+
 ---
 
 ### Option B: Docker (Production)
