@@ -1,0 +1,47 @@
+# Amnesia Configuration
+
+app:
+  name: "Amnesia"
+  version: "1.0.0"
+  debug: false
+  
+server:
+  host: "0.0.0.0"
+  port: 8000
+  workers: 4
+
+database:
+  url: "postgresql://user:password@localhost:5432/amnesia"
+  pool_size: 10
+
+redis:
+  url: "redis://localhost:6379/0"
+
+storage:
+  type: "local"  # Options: local, s3
+  local_path: "./storage/models"
+  s3_bucket: "amnesia-models"
+  s3_region: "us-east-1"
+
+training:
+  default_num_shards: 4
+  default_epochs: 50
+  default_batch_size: 32
+  default_learning_rate: 0.001
+
+unlearning:
+  default_alpha: 10.0
+  default_beta: 0.1
+  default_gamma: 0.01
+  default_epochs: 100
+  default_learning_rate: 0.01
+  verification_threshold: 0.6
+
+logging:
+  level: "INFO"
+  format: "{time} | {level} | {message}"
+  file: "./logs/amnesia.log"
+
+security:
+  api_key_enabled: true
+  rate_limit: 100  # requests per minute
