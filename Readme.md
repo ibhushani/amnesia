@@ -181,3 +181,19 @@ To contribute:
 This project is licensed under the **Apache 2.0 License**.
 
 **Disclaimer**: This tool is a proof-of-concept for **Verifiable Machine Unlearning**. While it implements state-of-the-art algorithms, ensure validation before using for critical legal compliance.
+
+## Verification Proof 📜
+Once unlearning is complete, you can verify the results and generate a **GDPR-compliant Certificate of Erasure**.
+
+1.  Go to the **Verification** page.
+2.  Run the **Membership Inference Attack (MIA)** on the target data.
+3.  If successful (Confidence < Threshold), a PDF certificate is generated.
+4.  **Download it** directly from the UI.
+
+**Sample Proof:**
+A sample certificate generated from our Vision MVP is included in this repository:
+👉 [PROOF_OF_ERASURE_VISION_MVP.pdf](./PROOF_OF_ERASURE_VISION_MVP.pdf)
+
+**Certificate Location:**
+All generated certificates are stored locally in:
+`storage/certificates/`

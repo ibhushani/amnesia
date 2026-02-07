@@ -20,15 +20,20 @@ def trigger_training(
     # and dispatch N tasks, one for each shard.
     # For simplicity, we dispatch one orchestrator task.
     
-    task = train_model_task.delay(
+    # Run locally for Vision MVP
+    background_tasks.add_task(
+        train_model_task,
         dataset_name=req.dataset_name,
         num_shards=req.num_shards,
         epochs=req.epochs,
         model_type=req.model_type
     )
     
+    # Dummy task ID since we aren't using Celery
+    mock_id = f"local-{job_id}"
+    
     return TrainingResponse(
-        task_id=task.id,
+        task_id=mock_id,
         status="dispatched",
         message="Training job started in background.",
         shards_created=req.num_shards

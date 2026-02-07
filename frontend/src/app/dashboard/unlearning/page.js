@@ -113,7 +113,7 @@ export default function UnlearningPage() {
                             <Slider
                                 value={config.epochs}
                                 onChange={(v) => setConfig({ ...config, epochs: v })}
-                                min={10} max={200} step={10}
+                                min={1} max={200} step={1}
                             />
                         </FormGroup>
 
